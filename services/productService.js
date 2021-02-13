@@ -2,7 +2,7 @@ const Cube = require('../models/Cube');
 const uniqid = require('uniqid');
 
 const fs = require('fs');
-const productsData = require('../config/products.json');
+let productsData = require('../config/products.json');
 
 function create(data) {
     
@@ -28,5 +28,6 @@ function getAll() {
 }
 
 module.exports = {
-    create
+    create,
+    getAll
 }

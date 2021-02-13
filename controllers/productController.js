@@ -3,7 +3,8 @@ const router = Router();
 const prodcutService = require('../services/productService');
 
 router.get('/', (req, res) => {
-    res.render('home', {layout: 'main', title: 'Browse'});  
+    let products = prodcutService.getAll();
+    res.render('home', {layout: 'main', title: 'Browse', products });  
 });
 
 
