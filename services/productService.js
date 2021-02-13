@@ -27,7 +27,12 @@ function getAll() {
     return productsData;
 }
 
+function getOne(id) {
+    return productsData.find(x => x.id == id);
+}
+
 module.exports = {
     create,
-    getAll
+    getAll,
+    getOne
 }

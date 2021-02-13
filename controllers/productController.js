@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const router = Router();
-const prodcutService = require('../services/productService');
+const productService = require('../services/productService');
 
 router.get('/', (req, res) => {
-    let products = prodcutService.getAll();
+    let products = productService.getAll();
     res.render('home', {layout: 'main', title: 'Browse', products });  
 });
 
@@ -15,15 +15,15 @@ router.get('/create', (req, res) => {
 router.post('/create', (req, res) => {
     // TODO: Validate input
 
-    prodcutService.create(req.body);
+    productService.create(req.body);
 
     res.redirect('/');  
 });
 
 
-router.get('/details/:productId', (req, res) => {
-    console.log(req.params.productId);
-    res.render('details', {layout: 'main', title: 'Details'});  
+router.get('/details/:productId', (req, res) => {   
+    let product = productService.getOne(req.params.productId);
+    res.render('details', {layout: 'main', title: 'Details', product });  
 });
 
 module.exports = router;
